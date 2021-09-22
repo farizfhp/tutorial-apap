@@ -1,6 +1,60 @@
+
 # Tutorial APAP
 ## Authors
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
+
+---
+## Tutorial 2
+### Pertanyaan
+**Pertanyaan 1: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link
+berikut:**
+
+**http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10**
+
+**Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.**
+
+Terdapat error Whitelabel karena template yang dibutuhkan pada baris return tidak ditemukan (belum dibuat). Saat baris return pada method addBioskop dijalankan, ia berusaha mencari template bernama "add-bioskop". Akan tetapi, karena belum ada template dengan nama tersebut, maka keluar Whitelabel error.
+
+&nbsp;
+
+
+**Pertanyaan 2: Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat.**
+
+Menurut saya, anotasi @Autowired pada class Controller digunakan agar tidak perlu repot menggunakan setter dan getter, serta juga tidak perlu menggunakan argumen pada constructor class. Konsep tersebut merupakan fitur dari Spring. Dengan menggunakan anotasi @Autowired field yang ada akan diisi object yang sesuai secara otomatis oleh Spring.
+
+&nbsp;
+
+
+
+**Pertanyaan 3: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut:** 
+
+**http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx**
+
+**Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.**
+
+Saat mengakses link tersebut, terdapat Whitelabel error juga. Hal ini disebabkan karena terdapat parameter yang tidak ada pada URL tersebut, yaitu jumlahStudio. Parameter tersebut required sehingga akan ada error bila tidak ada pada URL saat method addBioskop dipanggil.
+
+&nbsp;
+
+
+
+**Pertanyaan 4: Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?**
+
+Dengan asumsi Papa APAP mengetahui idBioskop dari Bioskop Maung, maka Papa APAP dapat mengakses URL berikut:
+
+http://localhost:8080/bioskop/view/id-bioskop/[idBioskop]
+
+Saat ingin mengakses URL tersebut, Papa APAP harus mengganti [idBioskop] dengan idBioskop dari Bioskop Maung.
+
+&nbsp;
+
+
+
+**Pertanyaan 5: Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.**
+
+Saya menambahkan bioskop baru bernama Bioskop BaruuuP. Berikut adalah tampilan saat mengakses viewall.
+![Screenshot viewall setelah bioskop ditambahkan](https://i.imgur.com/eci8EfE.png)
+
 
 ---
 ## Tutorial 1
