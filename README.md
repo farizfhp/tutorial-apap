@@ -2,6 +2,7 @@
 # Tutorial APAP
 ## Authors
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
+
 ---
 ## Tutorial 2
 ### Pertanyaan
@@ -53,6 +54,7 @@ Saat ingin mengakses URL tersebut, Papa APAP harus mengganti [idBioskop] dengan 
 
 Saya menambahkan bioskop baru bernama Bioskop BaruuuP. Berikut adalah tampilan saat mengakses viewall.
 ![Screenshot viewall setelah bioskop ditambahkan](https://i.imgur.com/eci8EfE.png)
+
 
 ---
 ## Tutorial 1
