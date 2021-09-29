@@ -4,6 +4,52 @@
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
 
 ---
+## Tutorial 3
+### Pertanyaan
+**Pertanyaan 1: Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)!**
+
+**@AllArgsConstructor** adalah anotasi yang dapat meng-generate constructor yang memiliki argumen untuk setiap attribute pada data field class tersebut.
+
+**@NoArgsConstructor** adalah notasi yang dapat meng-generate constructor yang tidak memiliki argumen.
+
+**@Setter** dan **@Getter** adalah notasi yang dapat meng-generate method setter dan getter untuk setiap attribute non static.
+
+**@Entity** berguna untuk mendefinisikan class sebagai sebuah table pada database.
+
+**@Table** berguna sebagai penamaan table yang disimpan pada database.
+
+&nbsp;
+
+**Pertanyaan 2: Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?**
+
+Kegunaan dari method tersebut adalah untuk mencari objek Bioskop berdasarkan value dari noBioskop yang diberikan sebagai argumen saat method tersebut dipanggil. 
+
+&nbsp;
+
+**Pertanyaan 3: Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn!**
+
+Untuk memetakan relasi antara suatu entity dengan entity lain, kita dapat menggunakan @JoinTable dan @JoinColumn. **@JoinTable** menggunakan table yang berbeda saat memetakan relasi tersebut, sedangkan **@JoinColumn** memanfaatkan Foreign Key dari table tujuan dan menggunakan entity table tujuan. 
+
+&nbsp;
+
+**Pertanyaan 4: Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull?**
+
+**name** berfungsi sebagai nama dari JoinColumn antara entity Penjaga dan Bioskop. **referencedColumnName** adalah judul dari kolom yang menjadi referensi foreign key yang dipilih. **nullable** menjadi sifat dari entity tersebut, bila nilainya false maka entity tersebut tidak dapat bernilai null. Perbedaan antara **nullable** dan **@NotNull** adalah bila kita menggunakan anotasi @NotNull, validasi data terjadi sebelum query update dan insert dijalankan pada database.
+
+&nbsp;
+
+**Pertanyaan 5: Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER**
+
+FetchType.LAZY digunakan agar data initialization tidak langsung dilakukan dari awal sehingga load timenya lebih rendah, tapi terdapat kemungkinan bahwa performance akan terganggu.
+
+FetchType.EAGER digunakan agar data initialization langsung dilakukan dari awal sehingga performance lebih baik, tapi load time akan menjadi lebih lama.
+
+CascadeType.ALL digunakan agar setiap operasi EntityManager yang dilakukan akan meng-cascade setiap entities yang memiliki relasi dengan entity tersebut.
+
+&nbsp;
+
+
+---
 ## Tutorial 2
 ### Pertanyaan
 **Pertanyaan 1: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link
