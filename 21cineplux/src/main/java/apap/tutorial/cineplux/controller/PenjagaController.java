@@ -116,5 +116,17 @@ public class PenjagaController {
         return "failed";
     }
 
+    @PostMapping("/penjaga/delete")
+    public String deletepenjagasubmit(
+            @ModelAttribute BioskopModel bioskop,
+            Model model
+    ){
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        for (PenjagaModel penjaga:
+                bioskop.getListPenjaga()) {
+            penjagaService.deletePenjaga(penjaga);
+        }
+        return "delete-penjaga";
+    }
 
 }
