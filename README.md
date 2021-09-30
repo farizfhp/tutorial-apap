@@ -4,6 +4,28 @@
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
 
 ---
+## Tutorial 4
+### Pertanyaan
+**Pertanyaan 1: Jelaskan perbedaan th:include dan th:replace!**
+
+**th:include** dan **th:replace** keduanya memiliki fungsi yang sama, yaitu untuk memasukkan fragments ke dalam sebuah html lain. Perbedaannya yaitu apabila kita memiliki sebuah element div, lalu menggunakan th:replace, maka element div tersebut akan tergantikan oleh fragment yang kita ingin gunakan. Sedangkan, bila kita penggunakan th:include, maka fragment yang ingin digunakan akan berada di dalam div tersebut.
+
+&nbsp;
+
+**Pertanyaan 2: Jelaskan apa fungsi dari th:object!**
+
+Fungsi dari th:object adalah untuk menspesifikasi object mana yang ingin kita gunakan pada sebuah element.
+
+&nbsp;
+
+**Pertanyaan 3: Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?**
+
+Bila kita sudah menggunakan th:object, kita dapat langsung mengakses setiap attribute dari object tersebut dengan menggunakan simbol asterisk (*) tanpa harus memanggil nama objectnya di depannya. Sedangkan, bila kita menggunakan simbol ($), kita masih harus memanggil nama object tersebut di depan attribute yang ingin kita panggil.
+
+&nbsp;
+
+
+---
 ## Tutorial 3
 ### Pertanyaan
 **Pertanyaan 1: Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)!**
