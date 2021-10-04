@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <head th:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <head th:fragment="js">
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaixoYvo6HppcZGetbYMGWSFIBw8HfCJo="
+                crossorigin="anonymous"
+        ></script>
+        <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+    </head>
+</head>
+<body>
+<!--    <nav th:fragment="navbar(activeTab)" class="navbar navbar-expand-lg navbar-light bg-light">-->
+    <footer th:fragment="footer" class="footer-07">
+        <div class="container">
+            <div class="row justify-content-center">
+                <p th:text="${time}"></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
