@@ -1,7 +1,9 @@
 package apap.tutorial.cineplux.controller;
 import apap.tutorial.cineplux.model.BioskopModel;
+import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.service.BioskopService;
+import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans. factory.annotation.Qualifier;
 import org. springframework.stereotype.Controller;
@@ -16,9 +18,18 @@ public class BioskopController {
     @Autowired
     private BioskopService bioskopService;
 
+    @Qualifier("filmServiceImpl")
+    @Autowired
+    FilmService filmService;
+
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
-        model.addAttribute("bioskop", new BioskopModel());
+        BioskopModel bioskop = new BioskopModel();
+        bioskop.setListFilm(new ArrayList<FilmModel>());
+        List<FilmModel> listFilm = filmService.getListFilm();
+
+        model.addAttribute("bioskop", bioskop);
+        model.addAttribute("listFilm", listFilm);
         return "form-add-bioskop";
     }
 
@@ -28,8 +39,26 @@ public class BioskopController {
             Model model
     ) {
         bioskopService.addBioskop(bioskop);
+        System.out.println(Arrays.toString(bioskop.getListFilm().toArray()));
         model.addAttribute("noBioskop", bioskop.getNoBioskop());
         return "add-bioskop";
+    }
+
+    @PostMapping(value = "/bioskop/add", params = {"addRow"})
+    public String addBioskopAddRow(
+            @ModelAttribute BioskopModel bioskop,
+            Model model
+    ) {
+        System.out.println(bioskop.getNamaBioskop());
+        if (bioskop.getListFilm() == null) {
+            bioskop.setListFilm(new ArrayList<>());
+        }
+        bioskop.getListFilm().add(new FilmModel());
+        System.out.println(Arrays.toString(bioskop.getListFilm().toArray()));
+        model.addAttribute("bioskop", bioskop);
+        List<FilmModel> listFilm = filmService.getListFilm();
+        model.addAttribute("listFilm", listFilm);
+        return "form-add-bioskop";
     }
 
     @GetMapping("bioskop/viewall")
@@ -45,6 +74,7 @@ public class BioskopController {
             @RequestParam(value = "noBioskop", required = false) Long noBioskop,
             Model model
     ) {
+        System.out.println("masuk view");
         if (noBioskop == null) {
             model.addAttribute("command", "view");
             model.addAttribute("type", "bioskop");
