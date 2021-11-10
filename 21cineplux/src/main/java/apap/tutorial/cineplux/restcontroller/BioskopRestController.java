@@ -71,4 +71,14 @@ public class BioskopRestController {
     private List<BioskopModel> retrieveListBioskop(){
         return bioskopRestService.retrieveListBioskop();
     }
+
+    @GetMapping("/bioskop/{noBioskop}/status")
+    private Mono<String> getStatus(@PathVariable("noBioskop") Long noBioskop){
+        return bioskopRestService.getStatus(noBioskop);
+    }
+
+    @GetMapping("/full")
+    private Mono<BioskopDetail> postStatus(){
+        return bioskopRestService.postStatus();
+    }
 }
