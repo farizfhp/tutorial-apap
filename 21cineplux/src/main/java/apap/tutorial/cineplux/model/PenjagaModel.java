@@ -35,8 +35,6 @@ public class PenjagaModel {
     @Column(nullable = false)
     private Integer jenisKelamin;
 
-    @NotNull
-    @Column(nullable = false)
     private Integer umur;
 
     //Relasi dengan BioskopModel
