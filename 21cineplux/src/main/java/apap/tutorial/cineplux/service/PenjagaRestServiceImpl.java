@@ -71,9 +71,17 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
 
     @Override
     public Mono<UmurPenjaga> prediksiUmur(Long noPenjaga){
+        LocalTime now = LocalTime.now();
         PenjagaModel penjaga = getPenjagaByNoPenjaga(noPenjaga);
-        return this.webClient.get().uri("?name=" + penjaga.getNamaPenjaga())
-                .retrieve()
-                .bodyToMono(UmurPenjaga.class);
+        BioskopModel bioskop = penjaga.getBioskop();
+        if((now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup()))
+                && bioskop.getListPenjaga().isEmpty()){
+            String[] namaPenjaga = penjaga.getNamaPenjaga().split(" ");
+            return this.webClient.get().uri("?name=" + namaPenjaga[0])
+                    .retrieve()
+                    .bodyToMono(UmurPenjaga.class);
+        }else {
+            throw new UnsupportedOperationException("Bioskop still open!");
+        }
     }
 }
