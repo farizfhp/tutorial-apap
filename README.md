@@ -1,7 +1,58 @@
 
+
 # Tutorial APAP
 ## Authors
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
+
+---
+## Tutorial 5
+### Pertanyaan
+**Pertanyaan 1: Apa itu Postman? Apa kegunaannya?**
+
+Postman adalah sebuah aplikasi pihak ketiga yang berfungsi sebagai REST CLIENT untuk melakukan uji coba terhadap REST API, baik yang kita buat maupun milik orang lain. Postman juga digunakan oleh para developer yang membuat API sebagai tools untuk menguji API yang telah dibuat, atau untuk memelajari API milik developer lain.
+
+&nbsp;
+
+**Pertanyaan 2: Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty!**
+
+**@JsonIgnoreProperties** berfungsi untuk mengabaikan properti logics mengenai serialize maupun deserialize dari JSON yang dianotasi di class-nya. @JsonIgnoreProperties memiliki beberapa elemen seperti allowSetters, allowGetters, ignoreUnknown dan value. Value dari anotasi tersebut menentukan nama properti yang akan diabaikan. @JsonProperty berfungsi untuk menandai metode setter/getter non-standar yang akan digunakan yang berhubungan dengan properti milik JSON.
+
+&nbsp;
+
+**Pertanyaan 3: Apa kegunaan atribut WebClient?**
+
+WebClient berguna untuk menjadi poin dasar utama untuk API yang akan digunakan, dan akan menjadi dasar dalam memanggil API tersebut.
+
+&nbsp;
+
+**Pertanyaan 4: Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?**
+
+ResponseEntity adalah anotasi yang mewakili seluruh respons dari HTTP. ResponseEntity dapat mengontrol semua attribute yang ada di dalamnya, seperti status, header, dan body. Tujuan utama ResponseEntity adalah untuk memberikan informasi di mana resource yang diubah. BindingResult berisi hasil validation dan nilai error yang dihasilkan saat melakukan validation. Agar dapat berfungsi, BindingResult harus muncul tepat setelah objek model yang divalidasi karena bila tidak berada di tepat setelah objek model tersebut Spring akan gagal untuk melakukan validation dari objek tersebut dan akan men-throw sebuah error message.
+
+&nbsp;
+
+
+---
+## Tutorial 4
+### Pertanyaan
+**Pertanyaan 1: Jelaskan perbedaan th:include dan th:replace!**
+
+**th:include** dan **th:replace** keduanya memiliki fungsi yang sama, yaitu untuk memasukkan fragments ke dalam sebuah html lain. Perbedaannya yaitu apabila kita memiliki sebuah element div, lalu menggunakan th:replace, maka element div tersebut akan tergantikan oleh fragment yang kita ingin gunakan. Sedangkan, bila kita penggunakan th:include, maka fragment yang ingin digunakan akan berada di dalam div tersebut.
+
+&nbsp;
+
+**Pertanyaan 2: Jelaskan apa fungsi dari th:object!**
+
+Fungsi dari th:object adalah untuk menspesifikasi object mana yang ingin kita gunakan pada sebuah element.
+
+&nbsp;
+
+**Pertanyaan 3: Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?**
+
+Bila kita sudah menggunakan th:object, kita dapat langsung mengakses setiap attribute dari object tersebut dengan menggunakan simbol asterisk (*) tanpa harus memanggil nama objectnya di depannya. Sedangkan, bila kita menggunakan simbol ($), kita masih harus memanggil nama object tersebut di depan attribute yang ingin kita panggil.
+
+&nbsp;
+
 
 ---
 ## Tutorial 3
