@@ -3,11 +3,12 @@
 
 <head>
     <title>21 Cineplux</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
+<nav th:replace="fragments/fragment :: navbar('bioskop')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
@@ -16,24 +17,60 @@
                 <br>
                 <form th:action="@{/bioskop/add}" th:object="${bioskop}" method="POST">
                     Nama Bioskop : <br>
-                    <input required class="form-control" type="text" name="namaBioskop" />
+                    <input required class="form-control" th:value="*{namaBioskop}" type="text" name="namaBioskop" />
                     <br><br>
 
                     Alamat Bioskop: <br>
-                    <input required class="form-control" type="text" name="alamatBioskop" />
+                    <input required class="form-control" th:value="*{alamatBioskop}" type="text" name="alamatBioskop" />
                     <br><br>
 
                     Jumlah Studio : <br>
-                    <input required min="0" class="form-control" type="number" name="jumlahStudio" />
+                    <input required min="0" class="form-control" th:value="*{jumlahStudio}" type="number" name="jumlahStudio" />
                     <br><br>
 
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" />
+                    <input required class="form-control" th:value="*{waktuBuka}" type="time" name="waktuBuka" />
                     <br><br>
 
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" />
+                    <input required class="form-control" th:value="*{waktuTutup}" type="time" name="waktuTutup" />
                     <br><br>
+                    <br><br>
+                    <br><br>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nama Film</th>
+                            <th>
+                                <button id="addRow" type="submit" class="btn button-sm btn-info" name="addRow">Tambah Row</button>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="film, iterationStatus : ${bioskop.listFilm}">
+                            <td>
+                                <select class="form-control" th:field="*{listFilm[__${iterationStatus.index}__].noFilm}" id="dropFilm">
+                                    <option value="0" style="display:none">Select a film</option>
+                                    <div th:each="film2 : ${listFilm}">
+                                        <option th:if="${film2.namaFilm} == null" style="display:none" th:value="${film2.noFilm}" th:text="${film2.namaFilm}"></option>
+                                        <option th:if="${film2.namaFilm} != null" th:value="${film2.noFilm}" th:text="${film2.namaFilm}"></option>
+                                    </div>
+                                </select>
+
+                            </td>
+                            <td>
+                                <button id="removeRow" type="button" class="btn btn-danger">Hapus</button>
+                            </td>
+                        </tr>
+<!--                        <td>-->
+<!--                            <select class="form-control" id="dropFilm2" th:field="*{listFilm}">-->
+<!--                                <option value="0">Select a film</option>-->
+<!--                                <option th:each="film : ${listFilm}" th:value="${film.noFilm}" th:text="${film.namaFilm}"></option>-->
+<!--                            </select>-->
+<!--                        </td>-->
+                        </tbody>
+                    </table>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
                     <a class="btn btn-primary" href="/">Home</a>
@@ -42,7 +79,6 @@
         </div>
     </div>
 </div>
-
 </body>
 
 </html>
