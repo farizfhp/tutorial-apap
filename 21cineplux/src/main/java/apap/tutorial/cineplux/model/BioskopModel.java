@@ -1,5 +1,6 @@
 package apap.tutorial.cineplux.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "bioskop")
+@JsonIgnoreProperties(value = {"listPenjaga","listFilm"}, allowSetters = true)
 public class BioskopModel implements Serializable, Comparable {
 
 
