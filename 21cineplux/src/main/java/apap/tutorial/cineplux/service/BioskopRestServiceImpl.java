@@ -13,6 +13,7 @@ import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -43,6 +44,18 @@ public class BioskopRestServiceImpl implements BioskopRestService{
         }else {
             throw new NoSuchElementException();
         }
+    }
+
+    @Override
+    public List<BioskopModel> getListBioskopByJumlahStudio(Integer jumlahStudio) {
+        List<BioskopModel> listAll = retrieveListBioskop();
+        List<BioskopModel> listBioskop = new ArrayList<>();
+        for (BioskopModel bioskop:listAll){
+            if (bioskop.getJumlahStudio() == jumlahStudio){
+                listBioskop.add(bioskop);
+            }
+        }
+        return listBioskop;
     }
 
     @Override

@@ -74,8 +74,7 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
         LocalTime now = LocalTime.now();
         PenjagaModel penjaga = getPenjagaByNoPenjaga(noPenjaga);
         BioskopModel bioskop = penjaga.getBioskop();
-        if((now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup()))
-                && bioskop.getListPenjaga().isEmpty()){
+        if((now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup()))){
             String[] namaPenjaga = penjaga.getNamaPenjaga().split(" ");
             return this.webClient.get().uri("?name=" + namaPenjaga[0])
                     .retrieve()

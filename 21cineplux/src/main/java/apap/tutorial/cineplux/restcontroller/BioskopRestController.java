@@ -1,5 +1,6 @@
 package apap.tutorial.cineplux.restcontroller;
 import apap.tutorial.cineplux.model.BioskopModel;
+import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.rest.BioskopDetail;
 import apap.tutorial.cineplux.service.BioskopRestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,14 @@ public class BioskopRestController {
                     HttpStatus.NOT_FOUND, "Bioskop with No Bioskop " + String.valueOf(noBioskop) + " Not Found."
             );
         }
+    }
+
+
+
+    @GetMapping(value = "/bioskop/jumlahStudio/{jumlahStudio}")
+    private List<BioskopModel> getListBioskopByJumlahStudio(@PathVariable("jumlahStudio") Integer jumlahStudio) {
+//        return List<BioskopModel> listBioskop = bioskopRestService.getListBioskopByJumlahStudio(jumlahStudio);
+        return  bioskopRestService.getListBioskopByJumlahStudio(jumlahStudio);
     }
 
     @GetMapping(value = "/list-bioskop")
