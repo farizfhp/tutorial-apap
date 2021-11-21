@@ -61,14 +61,20 @@ public class UserController {
     ) {
         UserModel user = userService.findUserbyUsername(httpreq.getRemoteUser());
         if (userService.isMatch(oldPassword, user.getPassword())){
-            if (newPassword.equals(confirmPassword)){
-                userService.setPassword(user, newPassword);
+            if (!oldPassword.equals(newPassword)){
+                if (newPassword.equals(confirmPassword)){
+                    userService.setPassword(user, newPassword);
 
-                model.addAttribute("message", "Password berhasil diubah");
+                    model.addAttribute("message", "Password berhasil diubah");
 
-            }else {
-                model.addAttribute("message", "Password konfirmasi tidak sama");
+                }else {
+                    model.addAttribute("message", "Password konfirmasi tidak sama");
+                }
             }
+            else {
+                model.addAttribute("message", "Password lama dan baru sama");
+            }
+
         }else {
             model.addAttribute("message", "Password lama salah");
         }
