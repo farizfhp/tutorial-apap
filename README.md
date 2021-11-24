@@ -5,6 +5,42 @@
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
 
 ---
+## Tutorial 6
+### Pertanyaan
+**Pertanyaan 1: Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?**
+
+Otentikasi adalah sistem keamanan yang memastikan bahwa pengguna memiliki credential di credentials storage pada sistem. Sedangkan, otorisasi adalah sistem keamanan yang membatasi akses pengguna berdasarkan rolenya. Pada tutorial ini, proses otentikasi ada pada WebSecurityConfig.java di dalam method configAuthentication. Sedangkan, proses otorisasi ada di pada file yang sama, namun pada method configure.
+
+&nbsp;
+
+**Pertanyaan 2: Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.**
+
+BCryptPasswordEncoder adalah class yang bertujuan untuk meng-encode sebuah password agar terenkripsi sehingga memiliki keamanan yang lebih tinggi. Class ini merupakan implementasi dari PasswordEncoder yang menggunakan BCrypt yang memiliki function hashing yang kuat. Password dienkripsi menggunakan hashing BCrypt menjadi sebuah hash. Dengan begitu, password yang "mentah" tidak dapat dilihat secara langsung oleh pengguna.
+
+&nbsp;
+
+**Pertanyaan 3: Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?**
+
+Menurut saya, password sebaiknya menggunakan hashing. Hashing dan encryption memiliki dua tujuan berbeda. Hashing bertujuan untuk menjaga integritas data. Sedangkan, encryption bertujuan untuk menjaga keamanan data hingga sampai ke tempat tujuan. Password hanya bersifat satu arah, yaitu dikirim oleh pengguna dan akan dicek oleh sistem. Dengan begitu, kita tidak perlu men-decode password sehingga hashing adalah pilihan yang tepat.
+
+&nbsp;
+
+**Pertanyaan 4: Jelaskan secara singkat apa itu UUID beserta penggunaannya!**
+
+UUID adalah singkatan dari Universally Unique Identifier, yaitu sebuah identifier yang terdiri dari 128-bit digit hexadecimal dan bersifat immutable serta di-generate secara random sehingga setiap UUID bersifat unik. UUID juga digunakan untuk membedakan objek secara unik dalam suatu sistem komputer berupa objek, token, maupun key database. 
+
+Pada tutorial kali ini, UUID digunakan sebagai identifier untuk setiap objek user. Menggunakan UUID jauh lebih aman apabila dibandingkan dengan hanya menggunakan auto increment ID karena id dari user akan sulit untuk ditebak dan diretas.
+
+&nbsp;
+
+**Pertanyaan 5: Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?**
+
+UserDetailsService merupakan interface yang digunakan untuk mengambil sebuah data spesifik dari user. Interface ini hanya memiliki satu method, yaitu loadUserByUsername. Method tersebut implementasinya dapat kita sesuaikan dengan model yang kita miliki. Pada tutorial kali ini, kita meng-override method loadUserByUsername dan memberikan otentikasi serta otorisasi berdasarkan role-nya.
+
+&nbsp;
+
+
+---
 ## Tutorial 5
 ### Pertanyaan
 **Pertanyaan 1: Apa itu Postman? Apa kegunaannya?**

@@ -37,7 +37,6 @@ public class PenjagaController {
             Model model
     ){
         penjagaService.addPenjaga(penjaga) ;
-        System.out.println(penjaga.getNamaPenjaga());
         model.addAttribute("noBioskop",penjaga.getBioskop().getNoBioskop());
         model.addAttribute("namaPenjaga", penjaga.getNamaPenjaga());
         return "add-penjaga";
@@ -48,7 +47,6 @@ public class PenjagaController {
             @PathVariable(required = false) Long noPenjaga,
             Model model
     ){
-        System.out.println(noPenjaga);
         if (noPenjaga == null) {
             model.addAttribute("command", "update");
             model.addAttribute("type", "penjaga");

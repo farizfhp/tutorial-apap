@@ -81,7 +81,6 @@ public class PenjagaRestController {
     private PenjagaModel prediksiUmur(@PathVariable("noPenjaga") Long noPenjaga) {
         try {
             PenjagaModel penjaga = penjagaRestService.getPenjagaByNoPenjaga(noPenjaga);
-            System.out.println(penjagaRestService.prediksiUmur(noPenjaga).block().getUmur());
             penjaga.setUmur(penjagaRestService.prediksiUmur(noPenjaga).block().getUmur());
             return penjagaRestService.getPenjagaByNoPenjaga(noPenjaga);
         } catch (NoSuchElementException e) {
