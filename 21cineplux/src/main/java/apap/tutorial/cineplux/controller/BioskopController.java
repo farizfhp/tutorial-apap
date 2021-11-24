@@ -4,12 +4,14 @@ import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
+import apap.tutorial.cineplux.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans. factory.annotation.Qualifier;
 import org. springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
@@ -21,6 +23,9 @@ public class BioskopController {
     @Qualifier("filmServiceImpl")
     @Autowired
     FilmService filmService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
@@ -39,7 +44,6 @@ public class BioskopController {
             Model model
     ) {
         bioskopService.addBioskop(bioskop);
-        System.out.println(Arrays.toString(bioskop.getListFilm().toArray()));
         model.addAttribute("noBioskop", bioskop.getNoBioskop());
         return "add-bioskop";
     }
@@ -49,12 +53,10 @@ public class BioskopController {
             @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
-        System.out.println(bioskop.getNamaBioskop());
         if (bioskop.getListFilm() == null) {
             bioskop.setListFilm(new ArrayList<>());
         }
         bioskop.getListFilm().add(new FilmModel());
-        System.out.println(Arrays.toString(bioskop.getListFilm().toArray()));
         model.addAttribute("bioskop", bioskop);
         List<FilmModel> listFilm = filmService.getListFilm();
         model.addAttribute("listFilm", listFilm);
@@ -71,10 +73,9 @@ public class BioskopController {
 
     @GetMapping("/bioskop/view")
     public String viewDetailBioskop(
-            @RequestParam(value = "noBioskop", required = false) Long noBioskop,
+            @RequestParam(value = "noBioskop", required = false) Long noBioskop, final HttpServletRequest httpreq,
             Model model
     ) {
-        System.out.println("masuk view");
         if (noBioskop == null) {
             model.addAttribute("command", "view");
             model.addAttribute("type", "bioskop");
@@ -82,6 +83,8 @@ public class BioskopController {
             return "failed";
         }
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
+        String role = userService.findUserbyUsername(httpreq.getRemoteUser()).getRole().getRole();
+        model.addAttribute("role", role);
 
         if(bioskop == null) {
             model.addAttribute("command", "view");
@@ -89,6 +92,7 @@ public class BioskopController {
             model.addAttribute("message", "Tidak ada bioskop dengan nomor tersebut");
             return "failed";
         }
+
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
         model.addAttribute("bioskop", bioskop);
         model.addAttribute("listPenjaga", listPenjaga);
