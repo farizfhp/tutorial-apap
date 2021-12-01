@@ -51,6 +51,7 @@ Element merupakan object DOM beserta attributenya. Sedangkan, component merupaka
 
 
 ---
+
 ## Tutorial 6
 ### Pertanyaan
 **Pertanyaan 1: Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?**
