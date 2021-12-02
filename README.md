@@ -5,8 +5,97 @@
 * **Fariz Habibie Permana** - *1906305833* - *APAP-C*
 
 ---
-<<<<<<< HEAD
-=======
+## Tutorial 8
+### Pertanyaan
+**Pertanyaan 1: Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?**
+
+Dengan memanggil this.setState dan mengembalikan nilai state menjadi semula, isi form (input) menjadi kembali seperti semula pula. Langkah tersebut perlu dilakukan karena value awal dari setiap input diambil dari nilai state.
+
+&nbsp;
+
+**Pertanyaan 2: Jelaskan fungsi dari async dan await!**
+
+Async berfungsi untuk menjalankan function secara asinkronis sehingga program tidak menunggu hasil dari function agar dapat lanjut berjalan. Akan tetapi, apabila terdapat await dalam sebuah function yang async, maka baris kode tersebut akan ditunggu hingga selesai (berjalan secara sinkronis) baru program lanjut berjalan.
+
+&nbsp;
+
+**Pertanyaan 3: Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.**
+
+![](https://i.imgur.com/8p6uEaT.png)
+![](https://i.imgur.com/O6xNR0v.png)
+![](https://i.imgur.com/E98MyVd.png)
+![](https://i.imgur.com/djgW8hy.png)
+![](https://i.imgur.com/ZTfGhdK.png)
+![](https://i.imgur.com/uwz1SPh.png)
+![](https://i.imgur.com/xWhyyMO.png)
+![](https://i.imgur.com/EK0SbGl.png)
+![](https://i.imgur.com/IInLZTt.png)
+
+&nbsp;
+
+**Pertanyaan 4: Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.**
+
+componentDidMount dipanggil saat component sudah digunakan. Function ini berfungsi untuk mengambil data dari endpoint, umumnya untuk meng-initiate network request.
+
+shouldComponentUpdate dipanggil saat render akan dipanggil (saat state dan props sudah diterima). Function ini memberikan informasi apakah component perlu diupdate berdasarkan state dan props yang ada dibandingkan dengan state dan props dari component yang sudah ada.
+
+componentDidUpdate dipanggil saat component sudah ter-update, tujuannya yaitu untuk mengoperasikan DOM dari component setelah ter-update.
+
+componentWillRecieveProps dipanggil saat sebelum render dilakukan, yaitu pada saat component menerima nilai props baru, tujuannya untuk memberikan informasi bahwa component akan menerima props baru.
+
+componentWillUnmount dipanggil saat component akan dihilangkan atau dihapus. Tujuannya yaitu untuk memutus connection request yang ada dari componentDidMount.
+
+&nbsp;
+
+
+---
+## Tutorial 7
+### Pertanyaan
+**Pertanyaan 1: Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.**
+
+Soal 1: Saya membuat fungsi baru untuk menghapus item dari cart yang dipanggil pada button delete dari cart. Pemanggilan function dapat dilihat dari screenshot berikut.
+
+
+![Screenshot soal 1](https://i.imgur.com/HjHkhfF.png)
+
+Soal 2: Saya membuat fungsi baru untuk menambah dan mengurangi balance berdasarkan harga item yang akan dimasukkan ke dalam cart. Pemanggilan function dapat dilihat dari screenshot berikut.
+
+
+![Screenshot soal 2](https://i.imgur.com/fJTVqlZ.png)
+
+Soal 3: Saya membuat constraint untuk tidak menambahkan item ke cart, terlihdat dari screenshot di atas. Constraint tersebut saya implementasikan ke dalam function untuk menambahkan item ke dalam cart. Implementasi tersebut dapat dilihat dari screenshot berikut.
+
+
+![Screenshot soal 3](https://i.imgur.com/f4te04R.png)
+&nbsp;
+
+**Pertanyaan 2: Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?**
+
+Pada functional component, tidak ada state dari komponen (stateless). State berlaku mirip seperti attribute dari objek, yaitu nilai private yang hanya dimiliki oleh objek tersebut. Sedangkan, prop merupakan attribute yang ada pada tag HTML. Dalam functional component, props merupakan parameter dari attribute. Sedangkan, dalam class componen, props merupakan attribute dari objek, dipanggil menggunakan 'this'.
+
+&nbsp;
+
+**Pertanyaan 3: Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.**
+
+Component dapat digunakan untuk mengurangi redudansi kode sehingga kode dapat menjadi lebih efisien dan rapi. Dengan begitu, developer dapat menjadi lebih mudah untuk menemukan bug yang ada dari program.
+
+&nbsp;
+
+**Pertanyaan 4: Apa perbedaan class component dan functional component?**
+
+Terdapat state di dalam class component, sedangkan functional component tidak. Selain itu, class component membutuhkan render, sedangkan functional component tidak.
+
+&nbsp;
+
+**Pertanyaan 5: Dalam react, apakah perbedaan component dan element?**
+
+Element merupakan object DOM beserta attributenya. Sedangkan, component merupakan function yang dapat menerima element dan dapat mereturn element pula. 
+
+&nbsp;
+
+
+---
+
 ## Tutorial 6
 ### Pertanyaan
 **Pertanyaan 1: Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?**
@@ -43,7 +132,6 @@ UserDetailsService merupakan interface yang digunakan untuk mengambil sebuah dat
 
 
 ---
->>>>>>> d711d3ddf9a619107fe2bc5f60dd5a088aae6769
 ## Tutorial 5
 ### Pertanyaan
 **Pertanyaan 1: Apa itu Postman? Apa kegunaannya?**
